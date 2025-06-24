@@ -1,0 +1,12 @@
+# binaries from go build
+/converter
+/miguelcrwz
+*.exe
+*.test
+*.out
+output/
+
+# editors and local tools
+.idea/
+.vscode/
+.claude/
