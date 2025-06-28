@@ -6,6 +6,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/miguelcrwz/conversions"
 )
 
 func main() {
@@ -31,6 +33,8 @@ func main() {
 			fmt.Println("\n\033[32;1mEXITING THE PROGRAM. GOODBYE! ⚒︎\033[0m")
 			break
 		}
+
+		handleConversion(choice, reader)
 	}
 }
 
@@ -42,8 +46,31 @@ func printConversionOptions(options map[int]string) {
 	fmt.Println("0. PROGRAM EXIT")
 }
 
+func handleConversion(choice int, reader *bufio.Reader) {
+	switch choice {
+	case 1:
+		value := readFloat(reader, "\n\033[35;1mEnter VALUE in METERS: \033[0m")
+		fmt.Printf("\033[35;1m%.2f METERS = %.3f KILOMETERS\033[0m\n", value, conversions.MetersToKilometers(value))
+	}
+}
+
 func readInt(reader *bufio.Reader) (int, error) {
 	input, _ := reader.ReadString('\n')
 	input = strings.TrimSpace(input)
 	return strconv.Atoi(input)
+}
+
+func readFloat(reader *bufio.Reader, prompt string) float64 {
+	for {
+		fmt.Print(prompt)
+		input, _ := reader.ReadString('\n')
+		input = strings.TrimSpace(input)
+
+		value, err := strconv.ParseFloat(input, 64)
+		if err != nil {
+			fmt.Println("\n\033[31;1m✘ INVALID INPUT, PLEASE ENTER A VALID NUMBER.\033[0m")
+			continue
+		}
+		return value
+	}
 }
