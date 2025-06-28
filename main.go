@@ -16,6 +16,7 @@ func main() {
 
 	conversionOptions := map[int]string{
 		1: "METERS to KILOMETERS",
+		2: "KILOGRAMS to POUNDS",
 	}
 
 	for {
@@ -51,6 +52,9 @@ func handleConversion(choice int, reader *bufio.Reader) {
 	case 1:
 		value := readFloat(reader, "\n\033[35;1mEnter VALUE in METERS: \033[0m")
 		fmt.Printf("\033[35;1m%.2f METERS = %.3f KILOMETERS\033[0m\n", value, conversions.MetersToKilometers(value))
+	case 2:
+		value := readFloat(reader, "\n\033[35;1mEnter VALUE in KILOGRAMS: \033[0m")
+		fmt.Printf("\n\033[35;1m%.2f KILOGRAMS = %.3f POUNDS\033[0m\n", value, conversions.KilogramsToPounds(value))
 	}
 }
 
