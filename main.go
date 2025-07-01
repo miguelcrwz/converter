@@ -18,6 +18,7 @@ func main() {
 		1: "METERS to KILOMETERS",
 		2: "KILOGRAMS to POUNDS",
 		3: "CELSIUS to FAHRENHEIT",
+		4: "SECONDS to MINUTES",
 	}
 
 	for {
@@ -59,6 +60,9 @@ func handleConversion(choice int, reader *bufio.Reader) {
 	case 3:
 		value := readFloat(reader, "\n\033[35;1mEnter TEMPERATURE in CELSIUS: \033[0m")
 		fmt.Printf("\n\033[35;1m%.2f CELSIUS = %.3f FAHRENHEIT\033[0m\n", value, conversions.CelsiusToFahrenheit(value))
+	case 4:
+		value := readFloat(reader, "\n\033[35;1mEnter TIME in SECONDS: \033[0m")
+		fmt.Printf("\n\033[35;1m%.2f SECONDS = %.3f MINUTES\033[0m\n", value, conversions.SecondsToMinutes(value))
 	}
 }
 
