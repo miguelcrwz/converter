@@ -17,6 +17,7 @@ func main() {
 	conversionOptions := map[int]string{
 		1: "METERS to KILOMETERS",
 		2: "KILOGRAMS to POUNDS",
+		3: "CELSIUS to FAHRENHEIT",
 	}
 
 	for {
@@ -55,6 +56,9 @@ func handleConversion(choice int, reader *bufio.Reader) {
 	case 2:
 		value := readFloat(reader, "\n\033[35;1mEnter VALUE in KILOGRAMS: \033[0m")
 		fmt.Printf("\n\033[35;1m%.2f KILOGRAMS = %.3f POUNDS\033[0m\n", value, conversions.KilogramsToPounds(value))
+	case 3:
+		value := readFloat(reader, "\n\033[35;1mEnter TEMPERATURE in CELSIUS: \033[0m")
+		fmt.Printf("\n\033[35;1m%.2f CELSIUS = %.3f FAHRENHEIT\033[0m\n", value, conversions.CelsiusToFahrenheit(value))
 	}
 }
 
