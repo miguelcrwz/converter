@@ -19,6 +19,7 @@ func main() {
 		2: "KILOGRAMS to POUNDS",
 		3: "CELSIUS to FAHRENHEIT",
 		4: "SECONDS to MINUTES",
+		5: "SQUARE METERS to SQUARE KILOMETERS",
 	}
 
 	for {
@@ -63,6 +64,9 @@ func handleConversion(choice int, reader *bufio.Reader) {
 	case 4:
 		value := readFloat(reader, "\n\033[35;1mEnter TIME in SECONDS: \033[0m")
 		fmt.Printf("\n\033[35;1m%.2f SECONDS = %.3f MINUTES\033[0m\n", value, conversions.SecondsToMinutes(value))
+	case 5:
+		value := readFloat(reader, "\n\033[35;1mEnter AREA in SQUARE METERS: \033[0m")
+		fmt.Printf("\n\033[35;1m%.2f SQUARE METERS = %.3f SQUARE KILOMETERS\033[0m\n", value, conversions.SquareMetersToSquareKilometers(value))
 	}
 }
 
