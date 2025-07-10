@@ -39,6 +39,11 @@ func main() {
 			break
 		}
 
+		if _, exists := conversionOptions[choice]; !exists {
+			fmt.Println("\n\033[31;1m✘ INVALID CHOICE, PLEASE CHOOSE A VALID OPTION.\033[0m")
+			continue
+		}
+
 		handleConversion(choice, reader)
 	}
 }
